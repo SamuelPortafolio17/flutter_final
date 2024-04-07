@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:proyecto_final/screens/homescreen.dart';
-import 'package:proyecto_final/screens/loginscreen.dart';
-// import 'package:proyecto_final/screens/screen_ahorro.dart';
-// import 'package:proyecto_final/screens/screen_corriente.dart';
 
 final controlerP = TextEditingController();
 final controlerU = TextEditingController();
-void main() {
-  runApp(const MaterialApp(
-    title: "APP",
-    debugShowCheckedModeBanner: false,
-    home: Home(),
-  ));
+final controlerC = TextEditingController();
+
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +29,7 @@ class Home extends StatelessWidget {
       body: Column(
         children: [
           const SizedBox(
-            height: 120,
+            height: 90,
           ),
           Center(
             child: Container(
@@ -42,7 +39,7 @@ class Home extends StatelessWidget {
                 decoration:
                     BoxDecoration(border: Border.all(color: const Color(0xFFF39422))),
                 child: const Text(
-                    "La Aplicacion Perfecta para gestionar de forma correcta el saldo de tu cuenta bancarias",
+                    "Si aun no estas registrado, crea una cuenta para mayor seguridad",
                     style: TextStyle(color: Color(0xFFF39422)))),
           ),
           const SizedBox(
@@ -56,29 +53,11 @@ class Home extends StatelessWidget {
                 decoration:
                     BoxDecoration(border: Border.all(color: const Color(0xFFF39422))),
                 child: const Text(
-                    "Por favor, ingresa tu Usuario y tu PIN personal para entrar en la APP",
+                    "Por favor, ingresa un Usuario, un Correo y un PIN personal que sean faciles de recordar",
                     style: TextStyle(color: Color(0xFFF39422)))),
           ),
           const SizedBox(
-            height: 100,
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const LoginScreen(),
-                  ));
-            },
-            style: ButtonStyle(
-              backgroundColor: MaterialStateColor.resolveWith(
-                  (states) => Colors.transparent),
-              shape: MaterialStateProperty.all(LinearBorder.none),
-            ),
-            child: const Text(
-              "¿Aun no estas registrado?",
-              style: TextStyle(color: Color(0xFFF39422)),
-            ),
+            height: 90,
           ),
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 80),
@@ -98,10 +77,27 @@ class Home extends StatelessWidget {
             height: 20,
           ),
           Container(
+            padding: const EdgeInsets.symmetric(horizontal: 80),
+            margin: const EdgeInsets.symmetric(horizontal: 80),
+            child: TextField(
+              controller: controlerC,
+              decoration: InputDecoration(
+                  labelText: "Escribe tu CORREO...",
+                  labelStyle: const TextStyle(color: Color(0xFFF39422)),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(90),
+                      borderSide: const BorderSide(
+                          color: Color(0xFF293A80), style: BorderStyle.solid))),
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Container(
             padding: const EdgeInsets.symmetric(horizontal: 100),
             margin: const EdgeInsets.symmetric(horizontal: 100),
             child: TextField(
-              controller: controlerU,
+              controller: controlerP,
               decoration: InputDecoration(
                   labelText: "Escribe tu PIN...",
                   labelStyle: const TextStyle(color: Color(0xFFF39422)),
